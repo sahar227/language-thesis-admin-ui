@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import WordsEditorPhase1 from "../WordsEditorPhase1/WordsEditorPhase1";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,7 +69,7 @@ export default function WordPhaseTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <WordsEditorPhase1 />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
