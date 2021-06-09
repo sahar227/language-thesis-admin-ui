@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import WordsEditorPhase1 from "../WordsEditorPhase1/WordsEditorPhase1";
 import WordsEditorPhase2 from "../WordsEditorPhase2/WordsEditorPhase2";
+import UserSessionsTab from "../UserSessionsTab";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,6 +62,7 @@ export default function WordPhaseTabs() {
         >
           <Tab label="Words Phase One" {...a11yProps(0)} />
           <Tab label="Words Phase Two" {...a11yProps(1)} />
+          <Tab label="User Sessions" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -68,6 +70,9 @@ export default function WordPhaseTabs() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <WordsEditorPhase2 />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <UserSessionsTab />
       </TabPanel>
     </div>
   );

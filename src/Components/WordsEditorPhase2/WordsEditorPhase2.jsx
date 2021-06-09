@@ -10,7 +10,6 @@ export default function WordsEditorPhase2() {
 
   const getWords = async () => {
     const words = await getWordsPhase2();
-    console.log(words);
     setWords(words);
   };
 
