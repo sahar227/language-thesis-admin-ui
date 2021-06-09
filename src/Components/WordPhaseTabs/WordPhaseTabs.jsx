@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import WordsEditorPhase1 from "../WordsEditorPhase1/WordsEditorPhase1";
+import WordsEditorPhase2 from "../WordsEditorPhase2/WordsEditorPhase2";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,15 +59,15 @@ export default function WordPhaseTabs() {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Words Phase One" {...a11yProps(0)} />
+          <Tab label="Words Phase Two" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <WordsEditorPhase1 />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <WordsEditorPhase2 />
       </TabPanel>
     </div>
   );

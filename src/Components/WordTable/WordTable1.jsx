@@ -36,7 +36,6 @@ export default function WordTable({ wordItems, removeWord }) {
             <StyledTableCell>Word</StyledTableCell>
             <StyledTableCell>Translation</StyledTableCell>
             <StyledTableCell>Image</StyledTableCell>
-            <StyledTableCell>Audio</StyledTableCell>
             <StyledTableCell></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -46,7 +45,6 @@ export default function WordTable({ wordItems, removeWord }) {
               <StyledTableCell>{wordItem.word}</StyledTableCell>
               <StyledTableCell>{wordItem.translation}</StyledTableCell>
               <StyledTableCell>{wordItem.imageURL}</StyledTableCell>
-              <StyledTableCell>None</StyledTableCell>
               <StyledTableCell>
                 <Button
                   variant="contained"
