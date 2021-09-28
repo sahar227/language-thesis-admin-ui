@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/language-thesis-admin-ui/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/language-thesis-admin-ui/static/js/main.f3d1e038.chunk.js",
+    "main.js.map": "/language-thesis-admin-ui/static/js/main.f3d1e038.chunk.js.map",
+    "runtime-main.js": "/language-thesis-admin-ui/static/js/runtime-main.6473b5b1.js",
+    "runtime-main.js.map": "/language-thesis-admin-ui/static/js/runtime-main.6473b5b1.js.map",
+    "static/js/2.0ab80a46.chunk.js": "/language-thesis-admin-ui/static/js/2.0ab80a46.chunk.js",
+    "static/js/2.0ab80a46.chunk.js.map": "/language-thesis-admin-ui/static/js/2.0ab80a46.chunk.js.map",
+    "static/js/3.559ed732.chunk.js": "/language-thesis-admin-ui/static/js/3.559ed732.chunk.js",
+    "static/js/3.559ed732.chunk.js.map": "/language-thesis-admin-ui/static/js/3.559ed732.chunk.js.map",
+    "index.html": "/language-thesis-admin-ui/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/language-thesis-admin-ui/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.0ab80a46.chunk.js.LICENSE.txt": "/language-thesis-admin-ui/static/js/2.0ab80a46.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6473b5b1.js",
+    "static/js/2.0ab80a46.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.f3d1e038.chunk.js"
+  ]
+}
