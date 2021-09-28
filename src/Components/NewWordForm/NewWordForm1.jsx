@@ -49,7 +49,9 @@ export default function NewWordForm({ addWord }) {
           </Button>
         </div>
       </form>
-      {imageURL && <img src={imageURL} style={{ maxWidth: "50vw" }} />}
+      {imageURL && (
+        <img src={imageURL} style={{ maxWidth: "50vw" }} alt={word} />
+      )}
     </div>
   );
 }
