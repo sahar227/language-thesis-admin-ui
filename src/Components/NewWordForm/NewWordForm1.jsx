@@ -19,33 +19,37 @@ export default function NewWordForm({ addWord }) {
     clearForm();
     setIsLoading(false);
   };
+
   return (
-    <form noValidate autoComplete="off">
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        <TextField
-          label="Word"
-          value={word}
-          onChange={(e) => setWord(e.target.value)}
-        />
-        <TextField
-          label="Translation"
-          value={translation}
-          onChange={(e) => setTranslation(e.target.value)}
-        />
-        <TextField
-          label="Image URL"
-          value={imageURL}
-          onChange={(e) => setImageURL(e.target.value)}
-        />
-        <Button
-          disabled={isLoading}
-          variant="contained"
-          color="primary"
-          onClick={submit}
-        >
-          Add Word
-        </Button>
-      </div>
-    </form>
+    <div>
+      <form noValidate autoComplete="off">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+          <TextField
+            label="Word"
+            value={word}
+            onChange={(e) => setWord(e.target.value)}
+          />
+          <TextField
+            label="Translation"
+            value={translation}
+            onChange={(e) => setTranslation(e.target.value)}
+          />
+          <TextField
+            label="Image URL"
+            value={imageURL}
+            onChange={(e) => setImageURL(e.target.value)}
+          />
+          <Button
+            disabled={isLoading}
+            variant="contained"
+            color="primary"
+            onClick={submit}
+          >
+            Add Word
+          </Button>
+        </div>
+      </form>
+      {imageURL && <img src={imageURL} style={{ maxWidth: "50vw" }} />}
+    </div>
   );
 }
