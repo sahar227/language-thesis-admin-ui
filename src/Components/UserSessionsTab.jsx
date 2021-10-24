@@ -6,7 +6,7 @@ import getSessions from "../api/userSessions/getSessions";
 import NewSessionForm from "./NewSessionForm";
 import UserSessionTable from "./UserSessionTable";
 
-export default function UserSessionsTab() {
+export default function UserSessionsTab({ openReport }) {
   const [sessions, setSessions] = useState([]);
 
   const getSessionsToState = async () => {
@@ -26,7 +26,7 @@ export default function UserSessionsTab() {
   return (
     <div>
       <h1>User sessions</h1>
-      <UserSessionTable sessions={sessions} />
+      <UserSessionTable sessions={sessions} openReport={openReport} />
       <div style={{ marginTop: "30px" }}>
         <NewSessionForm addSessions={addSession} />
       </div>

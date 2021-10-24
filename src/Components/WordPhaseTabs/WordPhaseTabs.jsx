@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import WordsEditorPhase1 from "../WordsEditorPhase1/WordsEditorPhase1";
 import WordsEditorPhase2 from "../WordsEditorPhase2/WordsEditorPhase2";
 import UserSessionsTab from "../UserSessionsTab";
+import ReportPage from "../ReportPage/ReportPage";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,9 +48,15 @@ const useStyles = makeStyles((theme) => ({
 export default function WordPhaseTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [reportID, setReportID] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const openReport = (sessionID) => {
+    setValue(3);
+    setReportID(sessionID);
   };
 
   return (
@@ -72,7 +79,10 @@ export default function WordPhaseTabs() {
         <WordsEditorPhase2 />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <UserSessionsTab />
+        <UserSessionsTab openReport={openReport} />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <ReportPage sessionID={reportID} />
       </TabPanel>
     </div>
   );

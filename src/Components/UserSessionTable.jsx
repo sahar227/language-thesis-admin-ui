@@ -26,7 +26,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-export default function UserSessionTable({ sessions }) {
+export default function UserSessionTable({ sessions, openReport }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="customized table">
@@ -46,7 +46,19 @@ export default function UserSessionTable({ sessions }) {
               <StyledTableCell>
                 {session.isOpen ? "Open" : "Closed"}
               </StyledTableCell>
-              <StyledTableCell>{session._id}</StyledTableCell>
+              <StyledTableCell>
+                <div
+                  style={{ cursor: "pointer", textDecoration: "underline" }}
+                  onClick={() => {
+                    if (!session.isOpen) openReport(session._id);
+                    else {
+                      navigator.clipboard.writeText(session._id);
+                    }
+                  }}
+                >
+                  {session._id}
+                </div>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
