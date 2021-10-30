@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -26,38 +26,57 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+function ReportTable({ questionReports }) {
+  return (
+    <TableContainer component={Paper}>
+      <Table aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Word</StyledTableCell>
+            <StyledTableCell>Letter</StyledTableCell>
+            <StyledTableCell>Correct Answer</StyledTableCell>
+            <StyledTableCell>User Answer</StyledTableCell>
+            <StyledTableCell>Seconds To Answer</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {questionReports.map((report) => (
+            <StyledTableRow key={report._id}>
+              <StyledTableCell>{report.word}</StyledTableCell>
+              <StyledTableCell>{report.letter}</StyledTableCell>
+              <StyledTableCell>{report.answer.toString()}</StyledTableCell>
+              <StyledTableCell>
+                {report.userAnswer !== undefined
+                  ? report.userAnswer.toString()
+                  : "Timed out"}
+              </StyledTableCell>
+              <StyledTableCell>{report.secondsToAnswer}</StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
+
 export default function Phase1Report({ questionReports }) {
+  const [showFullReport, setShowFullReport] = useState(false);
+
+  const correctAnswers = useMemo(
+    () => questionReports.filter((v) => v.userAnswer === v.answer).length,
+    [questionReports]
+  );
+
   return (
     <div>
       <h1>Phase 1 Report</h1>
-      <TableContainer component={Paper}>
-        <Table aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Word</StyledTableCell>
-              <StyledTableCell>Letter</StyledTableCell>
-              <StyledTableCell>Correct Answer</StyledTableCell>
-              <StyledTableCell>User Answer</StyledTableCell>
-              <StyledTableCell>Seconds To Answer</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {questionReports.map((report) => (
-              <StyledTableRow key={report._id}>
-                <StyledTableCell>{report.word}</StyledTableCell>
-                <StyledTableCell>{report.letter}</StyledTableCell>
-                <StyledTableCell>{report.answer.toString()}</StyledTableCell>
-                <StyledTableCell>
-                  {report.userAnswer !== undefined
-                    ? report.userAnswer.toString()
-                    : "Timed out"}
-                </StyledTableCell>
-                <StyledTableCell>{report.secondsToAnswer}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div>
+        {`Correct answers: ${correctAnswers}/${questionReports.length} `}
+      </div>
+      <button onClick={() => setShowFullReport((prev) => !prev)}>
+        {showFullReport ? "hide" : "show"} questions
+      </button>
+      {showFullReport && <ReportTable questionReports={questionReports} />}
     </div>
   );
 }
