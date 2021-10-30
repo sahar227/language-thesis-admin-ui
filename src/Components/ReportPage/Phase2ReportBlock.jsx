@@ -71,8 +71,8 @@ export default function Phase2ReportBlock({ questionReports, blockNumber }) {
     <div>
       <h2>Block {blockNumber}:</h2>
       <div>
-        {questionReports.length &&
-          `Correct answes: ${correctAnswers}/${questionReports.length} (${
+        {questionReports.length > 0 &&
+          `Correct answers: ${correctAnswers}/${questionReports.length} (${
             (correctAnswers / questionReports.length) * 100
           }%)`}
       </div>
