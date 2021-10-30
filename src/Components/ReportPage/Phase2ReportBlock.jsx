@@ -71,7 +71,10 @@ export default function Phase2ReportBlock({ questionReports, blockNumber }) {
     <div>
       <h2>Phase 2 Report block {blockNumber}</h2>
       <div>
-        {`Correct answes: ${correctAnswers}/${questionReports.length} `}
+        {questionReports.length &&
+          `Correct answes: ${correctAnswers}/${questionReports.length} (${
+            (correctAnswers / questionReports.length) * 100
+          }%)`}
       </div>
       <button onClick={() => setShowFullReport((prev) => !prev)}>
         {showFullReport ? "hide" : "show"} questions

@@ -71,7 +71,10 @@ export default function Phase1Report({ questionReports }) {
     <div>
       <h1>Phase 1 Report</h1>
       <div>
-        {`Correct answers: ${correctAnswers}/${questionReports.length} `}
+        {questionReports.length &&
+          `Correct answes: ${correctAnswers}/${questionReports.length} (${
+            (correctAnswers / questionReports.length) * 100
+          }%)`}{" "}
       </div>
       <button onClick={() => setShowFullReport((prev) => !prev)}>
         {showFullReport ? "hide" : "show"} questions
