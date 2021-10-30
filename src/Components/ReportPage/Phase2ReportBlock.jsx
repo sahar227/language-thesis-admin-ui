@@ -69,7 +69,7 @@ export default function Phase2ReportBlock({ questionReports, blockNumber }) {
 
   return (
     <div>
-      <h2>Phase 2 Report block {blockNumber}</h2>
+      <h2>Block {blockNumber}:</h2>
       <div>
         {questionReports.length &&
           `Correct answes: ${correctAnswers}/${questionReports.length} (${
