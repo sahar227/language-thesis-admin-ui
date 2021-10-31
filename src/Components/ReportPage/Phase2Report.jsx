@@ -44,6 +44,7 @@ export default function Phase2Report({ phase2Blocks, wordsPhase1 }) {
           <Phase2ReportBlock
             questionReports={block.report}
             blockNumber={i + 1}
+            wordsPhase1={wordsPhase1}
             key={i}
           />
         ))}

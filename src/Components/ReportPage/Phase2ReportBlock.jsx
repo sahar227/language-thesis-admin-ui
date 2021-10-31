@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -59,21 +59,51 @@ function ReportTable({ questionReports }) {
   );
 }
 
-export default function Phase2ReportBlock({ questionReports, blockNumber }) {
+export default function Phase2ReportBlock({
+  questionReports,
+  blockNumber,
+  wordsPhase1,
+}) {
   const [showFullReport, setShowFullReport] = useState(false);
 
-  const correctAnswers = useMemo(
-    () => questionReports.filter((v) => v.userAnswer === v.answer).length,
-    [questionReports]
+  const knownWordsQuestions = questionReports.filter((v) =>
+    wordsPhase1.has(v.word)
   );
+  const knownWordsCorrectAnswers = knownWordsQuestions.filter(
+    (v) => v.userAnswer === v.answer
+  ).length;
+  const newWordsQuestions = questionReports.filter(
+    (v) => !wordsPhase1.has(v.word)
+  );
+  const newWordsCorrectAnswers = newWordsQuestions.filter(
+    (v) => v.userAnswer === v.answer
+  ).length;
 
   return (
     <div>
       <h2>Block {blockNumber}:</h2>
       <div>
-        {questionReports.length > 0 &&
-          `Correct answers: ${correctAnswers}/${questionReports.length} (${
-            (correctAnswers / questionReports.length) * 100
+        {knownWordsQuestions.length > 0 &&
+          `Total Correct answers on phase1 words: ${knownWordsCorrectAnswers}/${
+            knownWordsQuestions.length
+          } (${
+            (knownWordsCorrectAnswers / knownWordsQuestions.length) * 100
+          }%)`}
+      </div>
+      <div>
+        {newWordsQuestions.length > 0 &&
+          `Total Correct answers on phase2 words: ${newWordsCorrectAnswers}/${
+            newWordsQuestions.length
+          } (${(newWordsCorrectAnswers / newWordsQuestions.length) * 100}%)`}
+      </div>
+      <div>
+        {newWordsQuestions.length > 0 &&
+          `Total Correct answers on ALL words: ${
+            newWordsCorrectAnswers + knownWordsCorrectAnswers
+          }/${questionReports.length} (${
+            ((newWordsCorrectAnswers + knownWordsCorrectAnswers) /
+              questionReports.length) *
+            100
           }%)`}
       </div>
       <button onClick={() => setShowFullReport((prev) => !prev)}>
